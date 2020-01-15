@@ -54,6 +54,6 @@ node() {
 			echo info
 
 			step([$class: 'XrayImportBuilder', endpointName: '/cucumber/multipart', importFilePath: 'target/cucumber.json', importInfo: info, inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
-			step([$class: 'XrayImportBuilder', endpointName: '/junit/multipart', importFilePath: "target/surefire-reports/*.xml", importToSameExecution: 'false', inputInfoSwitcher: 'filePath', serverInstance: 'server-a3cb4d89-7abd-4ee8-aebd-51b8e0244a44'])
+			step([$class: 'XrayImportBuilder', endpointName: '/junit/multipart', importFilePath: "target/surefire-reports/*.xml", importInfo: info, inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
 		}
 }
