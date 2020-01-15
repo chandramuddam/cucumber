@@ -54,6 +54,37 @@ node() {
 			echo info
 
 			step([$class: 'XrayImportBuilder', endpointName: '/cucumber/multipart', importFilePath: 'target/cucumber.json', importInfo: info, inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
+		}
+
+	stage('Import JUnit results to Xray') {
+
+		def description = "[BUILD_URL|${env.BUILD_URL}]" // BUILD_URL value does matter for this POC
+		// def description = "http://172.16.21.186:8080/job/xray/5"
+		def labels = '["regression","automated_regression"]'
+		def environment = "TEST"
+		def testExecutionFieldId = 10007
+		def testEnvironmentFieldName = "customfield_10132"
+		def projectKey = "XRAYD"
+		def xrayConnectorId = 'a3cb4d89-7abd-4ee8-aebd-51b8e0244a44'
+		def info = '''{
+				"fields": {
+					"project": {
+					"key": "''' + projectKey + '''"
+				},
+				"labels":''' + labels + ''',
+				"description":"''' + description + '''",
+				"summary": "Automated Regression Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
+				"issuetype": {
+				"id": "''' + testExecutionFieldId + '''"
+				},
+				"''' + testEnvironmentFieldName + '''" : [
+				"''' + environment + '''"
+				]
+				}
+				}'''
+
+			echo info
+
 			step([$class: 'XrayImportBuilder', endpointName: '/junit/multipart', importFilePath: "target/surefire-reports/*.xml", importInfo: info, importToSameExecution: 'true', inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
 		}
 }
