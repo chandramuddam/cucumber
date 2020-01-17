@@ -1,5 +1,6 @@
 pipeline {
 
+    stages {
     def repoURL = 'https://github.com/chandramuddam/cucumber.git'
 
     stage("Prepare Workspace") {
@@ -87,4 +88,5 @@ pipeline {
 
 			step([$class: 'XrayImportBuilder', endpointName: '/junit/multipart', importFilePath: "target/surefire-reports/*.xml", importInfo: info, importToSameExecution: 'true', inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
 		}
+    }
 }
