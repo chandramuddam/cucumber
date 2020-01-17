@@ -1,7 +1,6 @@
 pipeline {
 
     stages {
-    def repoURL = 'https://github.com/chandramuddam/cucumber.git'
 
     stage("Prepare Workspace") {
         steps {
@@ -14,6 +13,7 @@ pipeline {
     }
     stage('Checkout Self') {
         steps {
+            def repoURL = 'https://github.com/chandramuddam/cucumber.git'
             git branch: 'xray_video', credentialsId: '', url: repoURL
         }
     }
