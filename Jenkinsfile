@@ -1,4 +1,4 @@
-node() {
+pipeline {
 
     def repoURL = 'https://github.com/chandramuddam/cucumber.git'
 
