@@ -41,7 +41,7 @@ public class AppTest
         assertTrue( true );
     }
 
-    public void testPaul()
+    public void testPaulo()
     {
         assertTrue( true );
     }
