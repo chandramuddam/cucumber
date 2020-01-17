@@ -33,11 +33,7 @@ pipeline {
             steps {
                 archiveArtifacts "**/cucumber.json"
                 cucumber '**/cucumber.json'
-            }
-        }
 
-        always('Import results to Xray') {
-            steps {
                 script {
                     def description = "[BUILD_URL|${env.BUILD_URL}]" // BUILD_URL value does matter for this POC
                     // def description = "http://172.16.21.186:8080/job/xray/5"
@@ -67,11 +63,7 @@ pipeline {
                     echo info
                     step([$class: 'XrayImportBuilder', endpointName: '/cucumber/multipart', importFilePath: 'target/cucumber.json', importInfo: info, inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
                 }
-            }
-        }
 
-        always('Import JUnit results to Xray') {
-            steps {
                 script {
                     def description = "[BUILD_URL|${env.BUILD_URL}]" // BUILD_URL value does matter for this POC
                     // def description = "http://172.16.21.186:8080/job/xray/5"
