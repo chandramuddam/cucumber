@@ -63,7 +63,7 @@ pipeline {
                 step([$class: 'XrayImportBuilder', endpointName: '/cucumber/multipart', importFilePath: 'target/cucumber.json', importInfo: info, inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
             }
 
-       /*     script {
+            script {
                 def description = "[BUILD_URL|${env.BUILD_URL}]" // BUILD_URL value does matter for this POC
                 // def description = "http://172.16.21.186:8080/job/xray/5"
                 def labels = '["regression","automated_regression"]'
@@ -93,7 +93,7 @@ pipeline {
 
                 step([$class: 'XrayImportBuilder', endpointName: '/junit/multipart', importFilePath: "target/surefire-reports/*.xml", importInfo: info, importToSameExecution: 'true', inputInfoSwitcher: 'fileContent', serverInstance: xrayConnectorId])
                 
-            }*/
+            }
         }
     }
 }
