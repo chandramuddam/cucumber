@@ -31,22 +31,24 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testLogin()
     {
         assertTrue( true );
     }
 
-    public void testApp2()
+    public void testWorkflow()
     {
         assertTrue( true );
     }
 
-    public void testPaulo()
+    public void testDocumentVersion()
     {
         assertTrue( true );
     }
 
-    public void testChandra()
+    //com.mycompany.app.AppTest.testChandra - JIRA
+    //package + AppTest + test method
+    public void testRendition()
     {
         assertTrue( false );
     }
