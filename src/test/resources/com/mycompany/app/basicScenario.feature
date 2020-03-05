@@ -1,6 +1,6 @@
 Feature: First Feature
 
-  @hello @XRAYD-1
+  @hello @XP-1
   Scenario: First Hello
     Given I have "first" task
     And Step from "First Hello" in "First Feature" feature file
