@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         BUILD_TIME = sh(returnStdout: true, script: 'date +%F-%T').trim()
+        BUILD_URL = "http://172.16.21.237:8080//job/xray/5"
     }
 
     stages {
